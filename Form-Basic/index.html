@@ -1,0 +1,104 @@
+<html lang="en"> 
+<head>
+	<meta charset="UTF-8">
+	<title>Vue Form</title>
+</head>
+<style>
+    body {
+        padding: 50px;
+        display: flex;
+    }
+    #app {
+        margin: auto;
+    }
+    label,
+    input {
+        display: block;
+    }
+    input,
+    textarea {
+        margin-bottom: 20px;
+        width: 100%;
+    }
+    button {
+        margin-top: 10px;
+        border-radius: 2px;
+        width: 100%;
+        padding: 0.5rem;
+    }
+    .active {
+        border: 1px solid green;
+        background-color: green;
+        color: white;
+    }
+</style>
+<body>
+    <div id="app">
+        <form @submit.prevent="handleSubmit">
+            
+            <div>
+                <label for="name">Name:</label>
+                <input id="name" type="text" v-model="name" required/>
+            </div>
+            
+            <div>
+                <label for="email">Email:</label>
+                <input id="email" type="email" v-model="email" required/>
+            </div>
+            
+            <div>
+                <label for="msg">Message:</label>
+                <textarea id="msg" v-model="msg" required></textarea>
+            </div>
+
+            <!-- Submit button will be active when you enter a name. -->
+            <button :class="[name ? activeClass : '']" type="submit">Submit</button>
+
+            <!-- Server Response -->
+            <div>
+                <h3>Response from server:</h3>
+                <pre>{{ response }}</pre>
+            </div>
+
+        </form>
+    </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.3/vue.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                name: '',
+                email: '',
+                msg: '',
+                response: '', //Response from server
+                activeClass: 'active'
+            }
+        },
+        methods: {
+            handleSubmit() {
+                // Send data to server
+                // axios.post(' ../form-process.php ', { 
+                //     name: this.name, 
+                //     email: this.email, 
+                //     msg: this.msg 
+                // }).then(response => {
+                        // You would pass back a success or error message here.
+                        // Then that message would get injected into the html in the {{ response }}
+                //     this.response = JSON.stringify(response, null, 2)
+                // });
+
+                // Test
+                let data = {
+                    name: this.name,
+                    email: this.email,
+                    msg: this.message
+                }
+                console.table(data);
+            }
+        }
+    });
+</script>
+</body>
+</html>
