@@ -15,6 +15,10 @@ export default {
 </script>
 
 <style lang="scss">
+:root {
+    background-color: #2c3e50;
+}
+
 #app {
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
