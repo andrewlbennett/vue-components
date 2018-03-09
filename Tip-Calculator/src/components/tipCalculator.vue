@@ -13,9 +13,9 @@
         <p>Sales Tax: {{ getSalesTax }}%</p>
         <p>Subtotal: ${{ getSubTotal }}</p>
         <hr>
-        <p><b>15%:</b> ${{ getSubTotal | tip15 }} = ${{ getTaxTotal15 }}</p>
-        <p><b>20%:</b> ${{ getSubTotal | tip20 }} = ${{ getTaxTotal20 }}</p>
-        <p><b>25%:</b> ${{ getSubTotal | tip25 }} = ${{ getTaxTotal25 }}</p>
+        <p><b>15%:</b> ${{ getSubTotal | tip15 }} = ${{ getTipTotal15 }}</p>
+        <p><b>20%:</b> ${{ getSubTotal | tip20 }} = ${{ getTipTotal20 }}</p>
+        <p><b>25%:</b> ${{ getSubTotal | tip25 }} = ${{ getTipTotal25 }}</p>
     </div>
 </template>
 
@@ -50,22 +50,22 @@
             getSalesTax: function() {
                 return (this.salesTaxPerc * 100).toFixed(1);
             },
-            getTaxTotal15: function() {
+            getTipTotal15: function() {
                 let subTotal = this.getSubTotal;
-                let taxTotal = (this.getSubTotal * .15);
-                let total = (Number(taxTotal) + Number(subTotal)).toFixed(2);
+                let tipTotal = (this.getSubTotal * .15);
+                let total = (Number(tipTotal) + Number(subTotal)).toFixed(2);
                 return total;
             },
-            getTaxTotal20: function() {
+            getTipTotal20: function() {
                 let subTotal = this.getSubTotal;
-                let taxTotal = (this.getSubTotal * .2);
-                let total = (Number(taxTotal) + Number(subTotal)).toFixed(2);
+                let tipTotal = (this.getSubTotal * .2);
+                let total = (Number(tipTotal) + Number(subTotal)).toFixed(2);
                 return total;
             },
-            getTaxTotal25: function() {
+            getTipTotal25: function() {
                 let subTotal = this.getSubTotal;
-                let taxTotal = (this.getSubTotal * .25);
-                let total = (Number(taxTotal) + Number(subTotal)).toFixed(2);
+                let tipTotal = (this.getSubTotal * .25);
+                let total = (Number(tipTotal) + Number(subTotal)).toFixed(2);
                 return total;
             }
         },
